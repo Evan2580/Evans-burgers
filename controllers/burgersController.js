@@ -4,7 +4,7 @@ var router = express.Router();
 
 var burger = require("../models/burgers.js");
 
-router.get("/", function (req, res) {  // READ EVERYTHING
+router.get("/", function (req, res) { // READ EVERYTHING
   burger.all(function (data) {
     var hbsObject = {
       burgers: data
@@ -14,15 +14,19 @@ router.get("/", function (req, res) {  // READ EVERYTHING
   });
 });
 
-router.post("/api/burgers", function (req, res) {  //CREATE API ROUTE
+router.post("/api/burgers", function (req, res) { //CREATE API ROUTE
   burger.create([
-    "name", "burger"
-  ], [
+      "name", "burger"
+    ], [
       req.body.name, req.body.burger
     ], function (result) {
       // Send back the ID of the new quote
-      res.json({ id: result.insertId });
-})
+      res.json({
+        id: result.insertId
+      });
+    }
+  )})
+
 
 router.put("/api/burgers/:id", function (req, res) { // UPDATE FUNCTION
   var condition = req.params.id;
@@ -52,8 +56,8 @@ router.delete("api/burgers/:id", function (req, res) {
     } else {
       res.status(200).end();
 
-
-    });  //end of burgers.del
+    }
+  }); //end of burgers.del
 }); // end of router.del
 
-module.exports = router; 
+module.exports = router;

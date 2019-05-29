@@ -24,3 +24,5 @@ delete: function(id, cb) {
     })
 }
 }
+
+module.exports= burger; 

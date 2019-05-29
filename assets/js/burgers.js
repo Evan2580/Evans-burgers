@@ -1,13 +1,13 @@
-
-
 $(document).on("click", ".consumeBurger", consumeBurger);
 
 function consumeBurger() {
     let id = $(this).data("id");
-    let consumed = { eaten: 1 }
+    let consumed = {
+        devoured: 1
+    }
     $.ajax("/api/burgers" + id {
         method: "PUT",
-        data: eat
+        data: devroued
     }).then(function () {
         console.log("Burger eaten")
         location.reload();
@@ -49,5 +49,3 @@ $(".delete-Burger").on("click", function (event) {
         }
     );
 });
-});
-
