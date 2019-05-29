@@ -1,0 +1,20 @@
+{
+  "name": "evans-burgers",
+  "version": "1.0.0",
+  "description": "Evan's great tasting burgers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evan2580/Evans-burgers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evan2580/Evans-burgers/issues"
+  },
+  "homepage": "https://github.com/Evan2580/Evans-burgers#readme"
+}

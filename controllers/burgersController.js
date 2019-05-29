@@ -1,11 +1,11 @@
-var express = require ("express");
+var express = require("express");
 
 var router = express.Router();
 
 var burger = require("../models/burgers.js");
 
-router.get("/", function(req, res){  // READ EVERYTHING
-  burger.all(function(data){
+router.get("/", function (req, res) {  // READ EVERYTHING
+  burger.all(function (data) {
     var hbsObject = {
       burgers: data
     };
@@ -14,29 +14,46 @@ router.get("/", function(req, res){  // READ EVERYTHING
   });
 });
 
-router.post("/api/burgers", function(req, res){  //CREATE API ROUTE
+router.post("/api/burgers", function (req, res) {  //CREATE API ROUTE
   burger.create([
-
-  ])
+    "name", "burger"
+  ], [
+      req.body.name, req.body.burger
+    ], function (result) {
+      // Send back the ID of the new quote
+      res.json({ id: result.insertId });
 })
 
-router.put("/api/burgers/:id", function(req, res){ // UPDATE FUNCTION
+router.put("/api/burgers/:id", function (req, res) { // UPDATE FUNCTION
   var condition = req.params.id;
 
   console.log(condition);
 
   burgers.update({
+    burgers: req.body.burger
+  }, condition, function (result) {
+    if (result.changedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
 
   })
 })
 
-router.delete("api/burgers/:id" , function(req,res){
+router.delete("api/burgers/:id", function (req, res) {
   var condition = req.params.id;
 
-  burgers.delete(condition, function(result){
+  burgers.delete(condition, function (result) {
+    if (result.affectedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
 
 
-  });  //end of burgers.del
+    });  //end of burgers.del
 }); // end of router.del
 
 module.exports = router; 
