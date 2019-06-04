@@ -7,7 +7,7 @@ let orm = {
         connection.query(queryBurger, function(err, data){
             if (err) throw err;
             cb(data)
-        })    
+        })
     },
     insert: function(table, cols, vals, cb) {
         let queryBurger = "INSERT INTO " + table + "(" + cols + ") VALUES ('" + vals + "');"

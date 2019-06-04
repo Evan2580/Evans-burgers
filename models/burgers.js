@@ -25,4 +25,4 @@ delete: function(id, cb) {
 }
 }
 
-module.exports= burger; 
+module.exports= burger;

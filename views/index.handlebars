@@ -1,15 +1,21 @@
+<h1>Burger Eaten</h1>
 <ul class="burger_list">
   {{#each burgers}}
   {{#if this.devoured}}
   <li>{{this.burgerName}}</li>
+  <button class="eat-Burger" data-id="{{id}}">Eat this burger</button>
+  <button class = "removeBurger" data-id = "{{id}}"></button>
   {{/if}}
 
   {{/each}}
 </ul>
+<h1>Burgers Available</h1>
 <ul class="devoured_list">
   {{#each burgers}}
   {{#unless this.devoured}}
   <li>{{this.burgerName}}</li>
+  <button class="consumeBurger" data-id="{{id}}">Consume Burger</button>
+  <button class="removeBurger" data-id="{{id}}">Remove Burger</button>
   {{/unless}}
   {{/each}}
 </ul>
