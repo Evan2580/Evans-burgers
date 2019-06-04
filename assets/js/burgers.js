@@ -1,20 +1,24 @@
 $(document).on("click", ".consumeBurger", consumeBurger);
 
 function consumeBurger() {
-    let id = $(this).data("id");
-    let consumed = {
-        devoured: 1
-    }
-    $.ajax("/api/burgers" + id {
-        method: "PUT",
-        data: devroued
-    }).then(function () {
-        console.log("Burger eaten")
+    let id = $(this).attr("data-id");
+    // let consumed = {devoured: 1}
+    let devoured = 1;
+    $.ajax(
+        "/api/burgers/" + id,// url
+        {
+            method: "PUT",
+            data: devoured
+        }//data
+    )
+    .then(function (data) {
+        console.log(data);
+        console.log("Burger eaten");
         location.reload();
     })
 
 }
-$(".create-Burger").on("submit", function (event) {
+$(".cookBurger").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -35,17 +39,35 @@ $(".create-Burger").on("submit", function (event) {
         }
     );
 });
-$(".delete-Burger").on("click", function (event) {
-    var id = $(this).data("id");
-
+$(document).on("click", ".removeBurger", function (event) {
+    var id = $(this).attr("data-id");
+console.log("====================================");
     // Send the DELETE request.
-    $.ajax("/api/burger/" + id, {
-        type: "DELETE"
-    }).then(
-        function () {
-            console.log("deleted Burger", id);
+
+    $.ajax({
+        url: "/api/burgers/" + id,
+        type: 'DELETE'
+      }).then(
+        function (data) {
+            console.log(data);
+            // console.log("deleted Burger", id);
+            console.log("deleted Burger");
             // Reload the page to get the updated list
             location.reload();
         }
     );
+
+
+
+    // $.ajax("/api/burgers/" + id, {
+    //     type: "DELETE"
+    // }).then(
+    //     function (data) {
+    //         console.log(data);
+    //         // console.log("deleted Burger", id);
+    //         console.log("deleted Burger");
+    //         // Reload the page to get the updated list
+    //         location.reload();
+    //     }
+    // );
 });

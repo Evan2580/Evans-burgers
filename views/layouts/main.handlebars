@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Burger Eater</title>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" href="./../../public/assets/css/burger_style.css">
-    <script src = "../../assets/js/burgers.js"></script>
+    <head>
+        <title>Burger Eater</title>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="../../js/burgers.js"></script>
+        <link rel="stylesheet" href="../../css/style.css">
     </head>
+    <body>
+        {{{ body }}}
+ </body>
+    {{!-- <script type="text/javascript">
+    $(document).on("click", ".eat-Burger", eatBurger);
+    $(document).on("click", ".cookBurger", cookBurger);
+    $(document).on("click", ".removeBurger", removeBurger);
+    function eatBurger() {
+        console.log("*********************");
+        let id = $(this).data("id")
+        let eaten = {devoured: 1}
+        $.ajax("/api/burgers/" + id, {
+            method: "PUT",
+            data: eaten
+        }).then(function(){
+            console.log("Burger status changed")
+            location.reload()
+        })
+    }
+    function cookBurger() {
+        console.log("---------------------");
+        let id = $(this).data("id")
+        let eaten = {devoured: 0}
+        $.ajax("/api/burgers/" + id, {
+            method: "PUT",
+            data: eaten
+        }).then(function(){
+            console.log("Burger status changed")
+            location.reload()
+        })
+    }
+    function removeBurger() {
 
-<body>
+        console.log("====================");
+        let id = $(this).data("id")
+        $.ajax("/api/burgers/" + id, {
+            method: "DELETE"
+        }).then(function(){
+            console.log("Burger deleted")
+            location.reload();
+        })
+    }
+    </script> --}}
 
-    {{{body}}}
-</body>
+
 </html>
