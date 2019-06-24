@@ -14,18 +14,12 @@ router.get("/", function (req, res) { // READ EVERYTHING
   });
 });
 
-router.post("/api/burgers", function (req, res) { //CREATE API ROUTE
-  burger.create([
-      "name", "burger"
-    ], [
-      req.body.name, req.body.burger
-    ], function (result) {
-      // Send back the ID of the new quote
-      res.json({
-        id: result.insertId
-      });
-    }
-  )})
+router.post("/api/burgers", function(req, res){
+  let newBurger = req.body.burger
+  burger.insert("burgerName", newBurger, function(data){
+    res.redirect("/")
+  })
+})
 
 
 router.put("/api/burgers/:id", function (req, res) { // UPDATE FUNCTION
