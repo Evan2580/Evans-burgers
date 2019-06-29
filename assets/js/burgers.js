@@ -2,7 +2,7 @@ $(document).on("click", ".consumeBurger", consumeBurger);
 
 function consumeBurger() {
     let id = $(this).attr("data-id");
-    // let consumed = {devoured: 1}
+
     let devoured = 1;
     $.ajax(
         "/api/burgers/" + id,// url
@@ -54,20 +54,7 @@ console.log("====================================");
             console.log("deleted Burger");
             // Reload the page to get the updated list
             location.reload();
-        }
-    );
+        })
 
+})
 
-
-    // $.ajax("/api/burgers/" + id, {
-    //     type: "DELETE"
-    // }).then(
-    //     function (data) {
-    //         console.log(data);
-    //         // console.log("deleted Burger", id);
-    //         console.log("deleted Burger");
-    //         // Reload the page to get the updated list
-    //         location.reload();
-    //     }
-    // );
-});
