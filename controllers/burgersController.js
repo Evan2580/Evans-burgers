@@ -15,7 +15,8 @@ router.get("/", function (req, res) { // READ EVERYTHING
 });
 
 router.post("/api/burgers", function(req, res){
-  let newBurger = req.body.burger
+  let newBurger = req.body.burgerName;
+  console.log(newBurger)
   burger.insert("burgerName", newBurger, function(data){
     res.redirect("/")
   })
