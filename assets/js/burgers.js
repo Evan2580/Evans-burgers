@@ -26,7 +26,6 @@ $(".cookBurger").on("submit", function (event) {
         name: $("#new-Burger").val().trim(),
         Burger: $("[name=new-Burger]:checked").val().trim()
     };
-
     // Send the POST request.
     $.ajax("/api/burgers", {
         type: "POST",
@@ -57,4 +56,3 @@ console.log("====================================");
         })
 
 })
-
